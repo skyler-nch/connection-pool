@@ -7,7 +7,7 @@ def _find_one(collection:MongoClient, data:dict):
 
 def _insert_one(collection:MongoClient, data:dict):
     id = collection.insert_one(data)
-    return id
+    return id.inserted_id
 
 functions = {"find_one":_find_one,
              "insert_one":_insert_one,
@@ -20,4 +20,3 @@ def caller(client:MongoClient, db:str, collection:str,operation:str, data:dict):
         return response
     except:
         return HTTPException(405,"operation does not exist")
-    return

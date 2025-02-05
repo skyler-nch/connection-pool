@@ -1,2 +1,5 @@
+v0.0.1.1
+-added Form() to caller api parameters to dictate where requests would place their payloads
+
 v0.0.1.0
 -basic framework established
