@@ -1,0 +1,12 @@
+services:
+  connection-pool:
+    restart: always
+    image: connection-pool:latest
+    ports:
+      - 5003:5003
+    networks:
+      - proxynet
+  
+networks: 
+  proxynet:
+    name: backend_docker_network
