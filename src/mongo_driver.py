@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from pymongo.errors import DuplicateKeyError
 from fastapi.exceptions import HTTPException
 
 def _find_one(collection:MongoClient, data:dict):
@@ -18,5 +19,10 @@ def caller(client:MongoClient, db:str, collection:str,operation:str, data:dict):
         collection = client[db][collection]
         response = functions[operation](collection, data)
         return response
-    except:
+    except DuplicateKeyError:
+        return HTTPException(400,"duplicate key error")
+    except KeyError:
         return HTTPException(405,"operation does not exist")
+    except:
+        return HTTPException(400,"unknown error")
+
