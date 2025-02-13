@@ -1,3 +1,6 @@
+v0.0.2.1
+-fixed bug where if objectid is returned, the response couldnt serialize it
+
 v0.0.2.0
 -structs is not used 
 -removed Form() requirement as struct is now used
